@@ -11,5 +11,8 @@ app.use(cors());
 //controllers
 const { register, login } = require("./controllers/auth.controller");
 
+app.post("/register", register);
+app.post("/login", login);
+
 const PORT = process.env.PORT || 3002;
 app.listen(PORT, console.log(`server is running at port ${PORT}`));
