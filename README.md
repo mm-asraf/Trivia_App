@@ -39,10 +39,6 @@
 - `Nodejs`
 - `expressjs`
 - `MongoDB`
-- `CSS`
-- `materialize`
-- `express-handlebars`
-
 
 
 <h3 align="center">Thank You! For Your Time :smiley:</h3>
