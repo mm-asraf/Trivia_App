@@ -13,7 +13,9 @@ const register = async (req, res) => {
 
     //if it already exists then throw an error
     if (user) {
-      return res.status(400).json({ status: "failed", message: err.message });
+      return res
+        .status(400)
+        .json({ status: "failed", message: "user already exists" });
     }
     //else we will create the user we will hash the password as plain text password is harmful
     user = await User.create(req.body);
@@ -23,6 +25,18 @@ const register = async (req, res) => {
 
     // return the user and the token
     return res.status(201).json({ user, token });
+  } catch (err) {
+    return res.status(500).json({ status: "failed", message: err.message });
+  }
+};
+
+// to get all users just for test purpose
+
+const getUser = async (req, res) => {
+  try {
+    var user = await User.find().lean().exec();
+
+    return res.status(201).send(user);
   } catch (err) {
     return res.status(500).json({ status: "failed", message: err.message });
   }
@@ -64,4 +78,4 @@ const login = async (req, res) => {
   }
 };
 
-module.exports = { register, login, newToken };
+module.exports = { register, login, newToken, getUser };

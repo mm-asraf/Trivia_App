@@ -13,13 +13,12 @@ app.use(cors());
 
 //controllers
 const scoreController = require("./controllers/score.controller");
-const { register, login } = require("./controllers/auth.controller");
+const { register, login, getUser } = require("./controllers/auth.controller");
 
 app.post("/register", register);
+app.get("/users", getUser);
 app.post("/login", login);
-app.post("/score", scoreController);
-app.get("/score", scoreController);
-app.delete("/score", scoreController);
+app.use("/score", scoreController);
 
 //sessions
 // app.use(
