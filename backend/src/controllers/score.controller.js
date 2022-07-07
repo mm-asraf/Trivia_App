@@ -24,7 +24,10 @@ router.get("", async (req, res) => {
 
 router.get("/:id", async (req, res) => {
   try {
-    const score = await Score.findById(req.params.id).lean().exec();
+    const score = await Score.findById(req.params.id)
+      .populate({ path: "player" })
+      .lean()
+      .exec();
     return res.status(200).send(score);
   } catch (err) {
     return res.status(200).json({ err: err.message, status: "failed" });
