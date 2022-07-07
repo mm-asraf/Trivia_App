@@ -3,6 +3,7 @@ const app = express();
 require("dotenv").config();
 const connectDB = require("./configs/db");
 const cors = require("cors");
+const MongoStore = require("connect-mongo")(session);
 const session = require("express-session");
 connectDB();
 
